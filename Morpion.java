@@ -26,9 +26,10 @@ public class Morpion
 
 	public Morpion( )
 	{
+		Morpion( false );
         this.grille = new char[3][3];
-		this.joueur1 = x;
-		this.joueur2 = o;
+		this.joueur1 = 'o';
+		this.joueur2 = 'x';
 
 
 		System.out.println ( "------------------------------------------------------------------------------" );
@@ -45,8 +46,8 @@ public class Morpion
 	public Morpion( boolean j2 )
 	{
         this.grille = new char[3][3];
-		this.joueur1 = x;
-		this.joueur2 = o;
+		this.joueur1 = 'o';
+		this.joueur2 = 'x';
 		if (j2)
 		{
 			j2_Ordi = j2;
@@ -75,13 +76,35 @@ public class Morpion
 	/*                Méthode                 */
 	/* -------------------------------------- */
 
-    private boolean Agagner()
+    private boolean Agagner(char carac)
     {
-        return false;
+		
+		if ( grille[0][0] == grille[1][0] && grille[0][0] == grille[2][0] && grille[0][0] == carac )	{ return true; }
+		if ( grille[0][1] == grille[1][1] && grille[0][1] == grille[2][1] && grille[0][1] == carac )	{ return true; }
+		if ( grille[0][2] == grille[1][2] && grille[0][2] == grille[2][2] && grille[0][2] == carac )	{ return true; }
 
+		if ( grille[0][0] == grille[0][1] && grille[0][0] == grille[0][2] && grille[0][0] == carac )	{ return true; }
+		if ( grille[1][0] == grille[1][1] && grille[1][0] == grille[1][2] && grille[1][0] == carac )	{ return true; }
+		if ( grille[2][0] == grille[2][1] && grille[2][0] == grille[2][2] && grille[2][0] == carac )	{ return true; }
+
+		if ( grille[0][0] == grille[1][1] && grille[0][0] == grille[2][2] && grille[0][0] == carac )	{ return true; }
+		if ( grille[2][0] == grille[1][1] && grille[2][0] == grille[0][2] && grille[2][0] == carac )	{ return true; }
+
+        return false;
     }
 
+	public void jouer()
+	{
+		joueur(o);
+		System.out.println("pour jouer renter les coordonnée de la case");
 
+	}
+
+	public void joueur(char carac)
+	{
+
+	}
+	
 
     public  String toString()
 	{
