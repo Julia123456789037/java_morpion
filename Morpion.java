@@ -50,7 +50,7 @@ public class Morpion
 		this.joueur2 = 'x';
 		if (j2)
 		{
-			j2_Ordi = j2;
+			this.j2_Ordi = j2;
 		}
 
 
@@ -95,16 +95,36 @@ public class Morpion
 
 	public void jouer()
 	{
-		joueur(o);
+		while ( !Agagner(this.joueur1) || !Agagner(this.joueur2) )
+		{
+			joueur(this.joueur1);
+			if (this.j2_Ordi) { ordi(); } else {joueur(this.joueur2);}
+		}
+		if ( Agagner(this.joueur1) )
+		{
+			System.out.println("Bravo joueur 1, tu as gagner cette partie");
+		}
+
+
+		
+
+		joueur(this.joueur1);
 		System.out.println("pour jouer renter les coordonnée de la case");
 
 	}
 
 	public void joueur(char carac)
 	{
+		System.out.println("pour jouer renter les coordonnée de la case");
 
 	}
-	
+
+	public void ordi()
+	{
+		
+
+	}
+
 
     public  String toString()
 	{
