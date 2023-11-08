@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Grille 
  * Cette classe représente une grille de mots croisés.
  * @author Justine BONDU
-* @version 1 du 01/04/2023
+* @version 1 du 07/11/2023
 */
 public class Morpion 
 {
@@ -27,7 +27,7 @@ public class Morpion
 
 	public Morpion( )
 	{
-		Morpion( false );
+		//Morpion( false );
         this.grille = new char[3][3];
 		this.joueur1 = 'o';
 		this.joueur2 = 'x';
@@ -49,7 +49,7 @@ public class Morpion
         this.grille = new char[3][3];
 		this.joueur1 = 'o';
 		this.joueur2 = 'x';
-		thisnbTour = 0;
+		this.nbTour = 0;
 		if (j2)
 		{
 			this.j2_Ordi = j2;
@@ -119,19 +119,37 @@ public class Morpion
 		}
 	}
 
-	public void joueur(char carac)
+	public boolean joueur(char carac)
 	{
 		System.out.println("pour jouer renter les coordonnée de la case");
-
+		return false;
 	}
 
-	public void ordi()
+	public boolean ordi()
 	{
 		String	possibilite[] ={"00, 01, 02, 10, 11, 12, 20, 21, 22"};
-		int		coup;
-		coup =(int) (Math.random()*8);
+		String	coin[] ={"00, 02, 20, 22"};
+		int		coupInt;
+		String	coupString;
+		
+		if (this.nbTour == 0)
+		{
+			coupInt =(int) (Math.random()*4);
+			coupString = coin[coupInt];
+			grille[coupString.charAt(0)][coupString.charAt(1)] = this.joueur2;
+			return true;
+		}
+		
+		return false;
+	}
 
-
+	public boolean casePrise(int lig, int col)
+	{
+		if ( grille[lig][col] == 'x' || grille[lig][col] == 'o' )
+		{
+			return true;
+		}
+		return false;
 	}
 
 
