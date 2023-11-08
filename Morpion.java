@@ -17,6 +17,7 @@ public class Morpion
 	private char		joueur1;
 	private char		joueur2;
 	private boolean		j2_Ordi;
+	private int			nbTour;
 
 
 	/* -------------------------------------- */
@@ -48,6 +49,7 @@ public class Morpion
         this.grille = new char[3][3];
 		this.joueur1 = 'o';
 		this.joueur2 = 'x';
+		thisnbTour = 0;
 		if (j2)
 		{
 			this.j2_Ordi = j2;
@@ -104,13 +106,17 @@ public class Morpion
 		{
 			System.out.println("Bravo joueur 1, tu as gagner cette partie");
 		}
-
-
-		
-
-		joueur(this.joueur1);
-		System.out.println("pour jouer renter les coordonnée de la case");
-
+		if ( Agagner(this.joueur2) )
+		{
+			if (this.j2_Ordi)
+			{
+				System.out.println("Perdu, c'est l'ordinateu qui a gagner");
+			}
+			else
+			{
+				System.out.println("Bravo joueur 2, tu as gagner cette partie");
+			}
+		}
 	}
 
 	public void joueur(char carac)
@@ -121,7 +127,10 @@ public class Morpion
 
 	public void ordi()
 	{
-		
+		String	possibilite[] ={"00, 01, 02, 10, 11, 12, 20, 21, 22"};
+		int		coup;
+		coup =(int) (Math.random()*8);
+
 
 	}
 
